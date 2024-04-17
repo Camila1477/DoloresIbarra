@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatibe" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda virtual</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .img {
+      height: 200px;
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a href="" class="navbar-brand mx-auto">Inventario</a>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mt-4">
+        <div class="card">
+          <h3 class="card-title">Mouse</h3>
+          <img src="mouse azul.jpg" alt="Mouse Azul" class="img">
+          <div class="card-body">
+            
+              <div class="form-group">
+                <label>Mouse alambrico azul</label>
+              </div>
+              <div class="form-group">
+                <input name="inventario" type="text" class="form-control" placeholder="Cantidad" value="<%= productos.inventario %>">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Comprar">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-4">
+        <div class="card">
+          <h3 class="card-title">Teclado</h3>
+          <img src="teclado.jpg" alt="Teclado" class="img">
+          <div class="card-body">
+            <form action="/actualizarFormulario/<%= productos.id %>" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label>Teclado alambrico</label>
+              </div>
+              <div class="form-group">
+                <input name="inventario" type="text" class="form-control" placeholder="Inventario" value="<%= productos.inventario %>">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Comprar">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-4">
+        <div class="card">
+          <h3 class="card-title">Bocina</h3>
+          <img src="bocina.jpg" alt="Bocina" class="img">
+          <div class="card-body">
+            <form action="/actualizarFormulario/<%= productos.id %>" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label>Bocinas inalambricas</label>
+              </div>
+              
+              <div class="form-group">
+                <input name="inventario" type="text" class="form-control" placeholder="Cantidad" value="<%= productos.inventario %>">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Comprar">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/main.js"></script>
+</body>
+
+</html>

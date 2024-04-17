@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatibe" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario 2</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a href="" class="navbar-brand mx-auto">Productos</a>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mt-4 text-center">
+        <a href="/formulario" class="btn btn-primary">Regresar a agregar producto</a>
+        <table class="table table-striped">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Descripcion</th>
+            <th>Inventario</th>
+          </tr>
+          <% for (var i=0; i < productos.length; i ++) { %>
+            <tr>
+              <td>
+                <%= productos[i].id %>
+              </td>
+              <td>
+                <%= productos[i].nombre %>
+              </td>
+              <td>
+                <% if(productos[i].inventario >0) { %>
+                <img src="<%= productos[i].path %>" class="card-img-top" alt="<%= productos[i].filename %>">
+                <% } %>
+              </td>
+              <td>
+                <%= productos[i].descripcion %>
+              </td>
+              <td>
+                <%= productos[i].inventario %>
+              </td>
+             
+              <td class="d-flex gap-2">
+                <a href="/formulario/<%= productos[i].id %>" class="btn btn-info">
+                  Editar
+                  
+                </a>
+                <a href="/borrarFormulario/<%= productos[i].id %>" class="btn btn-danger">
+                  Delete
+                </a>
+              </td>              
+            </tr>
+          <% } %>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/main.js"></script>
+
+</body>
+
+</html>

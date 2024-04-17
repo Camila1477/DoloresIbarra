@@ -1,0 +1,178 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papeleria</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .img-fixed-size {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a href="" class="navbar-brand mx-auto">PAPELERIA ABEJITA</a>
+  </nav>
+  <div class="container">
+    <div class="row">
+    
+      <div class="col-md-4 mt-4">
+        <div class="card">
+          <h3 class="card-title">Calculadora</h3>
+          <img src="calculadora.jpg" alt="Calculadora" class="img-fluid img-fixed-size" id="calculadora-img">
+          <div class="card-body">
+            <form action="/comprar" method="post">
+              <input type="hidden" name="producto" value="calculadora">
+              <div class="form-group">
+                <label>Calculadora básica</label><br>
+                <label>Precio: 250</label>
+              </div>
+              <div class="form-group">
+                <input name="cantidad" type="text" class="form-control" placeholder="Cantidad">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Comprar">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-4">
+        <div class="card">
+          <h3 class="card-title">Cuaderno</h3>
+          <img src="cuaderno1.jpg" alt="Cuaderno" class="img-fluid img-fixed-size" id="cuaderno-img">
+          <div class="card-body">
+            <form action="/comprar" method="post">
+              <input type="hidden" name="producto" value="cuaderno">
+              <div class="form-group">
+                <label>Cuaderno Norma de 100 hojas</label><br>
+                <label>Precio: 50</label>
+              </div>
+              <div class="form-group">
+                <input name="cantidad" type="text" class="form-control" placeholder="Cantidad">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Comprar">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mt-4">
+        <div class="card">
+          <h3 class="card-title">Tijera</h3>
+          <img src="tijeras.jpg" alt="Tijera" class="img-fluid img-fixed-size" id="tijera-img">
+          <div class="card-body">
+            <form action="/comprar" method="post">
+              <input type="hidden" name="producto" value="tijeras">
+              <div class="form-group">
+                <label>Tijeras amarillas barrilito</label><br>
+                <label>Precio: 15</label>
+              </div>
+              <div class="form-group">
+                <input name="cantidad" type="text" class="form-control" placeholder="Cantidad">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Comprar">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Obtener el inventario de cada producto y ocultar la imagen si el inventario es cero o menos
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const calculadoraImg = document.getElementById('calculadora-img');
+      const cuadernoImg = document.getElementById('cuaderno-img');
+      const tijerasImg = document.getElementById('tijeras-img');
+
+      // Verificar el inventario y ocultar la imagen si es necesario
+      if (parseInt(calculadoraImg.dataset.inventario) <= 0) {
+        calculadoraImg.style.display = 'none';
+      }
+
+      if (parseInt(cuadernoImg.dataset.inventario) <= 0) {
+        cuadernoImg.style.display = 'none';
+      }
+
+      if (parseInt(tijerasImg.dataset.inventario) <= 0) {
+        tijerasImg.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papeleria</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="main.css">
+  <style>
+    .img-fixed-size {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a href="" class="navbar-brand mx-auto">PAPELERIA ABEJITA</a>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <% for(let i=0; i < productos.length; i++) { %>
+      <% if(productos[i].inventario > 0) { %>
+      <div class="col-md-4 mt-4">
+        <div class="card">
+          <h3 class="card-title"><%= productos[i].nombre %></h3>
+          <img src="<%= productos[i].path %>" class="img-fluid img-fixed-size card-img-top"
+            alt="<%= productos[i].filename %>">
+          <div class="card-body">
+            <form action="/comprar" method="post">
+              <input type="hidden" name="producto" value="<%= productos[i].nombre %>">
+              <div class="form-group">
+                <label><%= productos[i].descripcion %></label><br>
+                <label>Precio: <%= productos[i].precio %></label>
+              </div>
+              <div class="form-group">
+                <input name="cantidad" type="text" class="form-control" placeholder="Cantidad">
+              </div>
+              <input type="submit" class="btn btn-primary" value="Comprar">
+            </form>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      <% } %>
+    </div>
+  </div>
+
+  <script>
+    // Obtener el inventario de cada producto y ocultar la imagen si el inventario es cero o menos
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const images = document.querySelectorAll('.card-img-top');
+      images.forEach(img => {
+        if (parseInt(img.dataset.inventario) <= 0) {
+          img.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
